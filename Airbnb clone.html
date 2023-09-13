@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Airbnb-Clone</title>
+    <style>
+        .fullscreen {
+            display: flex;
+            position: absolute;
+            top: 0;
+            left: 0;
+            flex-flow: column;
+            background-color: #ffffff;
+            font-family: 'Roboto';
+            min-height: 100%;
+            min-width: 100%;
+        }
+
+        .header {
+            display: flex;
+            height: 59px;
+            background-color: black;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .header>a {
+            color: white;
+            font-weight: 300;
+        }
+
+        .top-background {
+            display: flex;
+            flex-direction: column;
+            background-size: cover;
+            background-repeat: no-repeat;
+
+            background-image: url("Airbnb Clone Resource/Background Image.webp");
+            padding: 0 80px;
+        }
+
+        .menu {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            color: #ffffff;
+            height: 80px;
+
+
+        }
+
+        .menu-left {
+            display: flex;
+            flex: 1;
+            align-items: center;
+            font-size: 20px;
+            font-weight: 500;
+        }
+
+
+        .menu-left>img {
+            height: 32px;
+            filter: brightness(0) invert(1);
+            padding: 0 5px;
+        }
+
+        .menu-left>img:hover,
+        .menu-left>span:hover,
+        .menu-center>div:hover,
+        .menu-right>div:hover {
+            cursor: pointer;
+        }
+
+        .menu-center {
+            display: flex;
+            flex: 1;
+            height: 100%;
+            flex-direction: row;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .menu-center>div {
+            padding: 10px;
+        }
+
+        .menu-center>div:hover {
+            border-bottom: white solid 1px;
+        }
+
+        .menu-right {
+            display: flex;
+            flex: 1;
+            justify-content: flex-end;
+            align-items: center;
+        }
+
+
+        .menu-right>div:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .host {
+            padding: 10px;
+            border-radius: 20px;
+            font-weight: 300;
+        }
+
+        .global {
+            border-radius: 20px;
+            padding: 0 10px;
+        }
+
+        .id {
+            display: flex;
+            flex-direction: row;
+            padding: 5px 10px;
+            background-color: #ffffff;
+            border-radius: 20px;
+
+        }
+
+        .global>img,
+        .id>img {
+            width: 26px;
+            padding: 5px;
+            mix-blend-mode: multiply;
+        }
+
+        .searchbox {
+            display: flex;
+            height: 66px;
+            background-color: white;
+            color: black;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 66px;
+            margin: 0 150px;
+        }
+
+        .searchitemlarge {
+            display: flex;
+            flex: 1.5;
+            flex-direction: column;
+            padding: 5px 30px;
+            border-radius: 30px;
+        }
+
+        .searchitem {
+            display: flex;
+            flex: 1;
+            flex-direction: column;
+            padding: 5px 20px;
+            border-left: 1px solid grey;
+
+        }
+
+        .searchbelow {
+            font-size: 12px;
+            color: rgba(0, 0, 0, 0.6);
+            padding: 5px 0;
+        }
+
+        .glass {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 45px;
+            height: 45px;
+            margin: 0 10px;
+            border-radius: 45px;
+            background-color: #FA215B;
+        }
+
+        .glass>img {
+            display: flex;
+            width: 16px;
+            height: 16px;
+            mix-blend-mode: multiply;
+        }
+
+        .searchitem:hover,
+        .searchitemlarge:hover {
+            border-radius: 20px;
+            background-color: #E7E7E7;
+            width: 20px;
+        }
+
+        .searchabove:hover,
+        .glass>img:hover,
+        .adsbutton>button:hover,
+        .bycar:hover,
+        .accom0:hover,
+        .act-example:hover,
+        .bottommenu-2:hover,
+        .license-check:hover,
+        .language:hover,
+        .social:hover {
+            cursor: pointer;
+        }
+
+        .bottommenu-2:hover,
+        .license-check2:hover {
+            text-decoration: underline;
+        }
+
+        .glass:hover {
+            background-color: #DC0E64;
+        }
+
+        .ads {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 625px;
+        }
+
+        .adstext {
+            color: white;
+            font-size: 58px;
+            font-weight: bold;
+        }
+
+        .adsbutton>button {
+            padding: 1px 6px;
+            margin: 15px 0;
+            border: none;
+            border-radius: 600px;
+            font-size: 14px;
+            height: 32px;
+            width: 155px;
+        }
+
+        .bycar1,
+        .bycar2,
+        .accomodations {
+            padding: 0 80px;
+            margin: 50px 0;
+            display: flex;
+        }
+
+        .bycar11,
+        .bycar22 {
+            display: flex;
+            flex: 1;
+            align-items: center;
+        }
+
+        .bycar11>img,
+        .bycar22>img {
+            width: 70px;
+            height: 70px;
+        }
+
+        .location {
+            display: flex;
+            flex-direction: column;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+        .accomodations {
+            display: flex;
+            flex-flow: column;
+            min-height: 356.5px;
+            font-size: 18px;
+            align-items: baseline;
+        }
+
+        .accom {
+            display: flex;
+        }
+
+        .accom-name {
+            font-size: 30px;
+            font-weight: 700;
+            padding: 10px 0;
+        }
+
+        .accom0 {
+            flex: 1;
+            padding-right: 13px;
+            justify-content: center;
+        }
+
+        .accom0>img {
+            width: 100%;
+            border-radius: 10px;
+
+        }
+
+        .activities {
+            padding: 50px 80px;
+            color: #ffffff;
+            background-color: black;
+        }
+
+        .host {
+            padding: 50px 80px;
+        }
+
+        .unique {
+            font-size: 30px;
+            font-weight: 700;
+
+        }
+
+        .meet {
+            font-size: 14px;
+            font-weight: 300;
+        }
+
+        .act-example {
+            display: flex;
+
+        }
+
+        .act-example-1>img {
+            padding: 10px 0;
+            border-radius: 16px;
+
+        }
+
+        .act-example-1 {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            margin: 0 5px;
+
+        }
+
+        .act-example-2 {
+            font-weight: 700;
+            font-size: 18px;
+        }
+
+        .act-example-3 {
+            font-weight: 300;
+            font-size: 14.5px;
+        }
+
+        .act-example-4 {
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        .bottommenu {
+            display: flex;
+            flex-direction: row;
+            padding: 26px 80px;
+            background-color: rgb(247, 247, 247);
+
+        }
+
+        .bottommenu-1 {
+            flex: 1;
+        }
+
+        .bottommenu-2 {
+            padding-top: 10px;
+            font-size: 14px;
+        }
+
+        .bottommenu-02 {
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .social {
+            display: flex;
+            justify-content: space-between;
+            width: 69px;
+            height: 17px;
+        }
+
+        .social>img {
+            width: 16px;
+            height: 16px;
+            padding-left: 8px;
+        }
+
+        .license-check {
+            display: flex;
+        }
+
+        .footer {
+            display: flex;
+            flex-direction: column;
+            background-color: aqua;
+            font-size: 14px;
+            padding: 0px 80px;
+            background-color: rgb(247, 247, 247);
+            padding-bottom: 25px;
+        }
+
+        .footer-linebreak {
+            display: flex;
+        }
+
+        .license {
+            flex: 4;
+        }
+
+        .language,
+        .social {
+            flex: 1;
+            justify-content: flex-end;
+        }
+
+        .language>span {
+            text-decoration: underline;
+            font-weight: 600;
+        }
+
+        hr {
+            height: 0.5px;
+            background-color: #CECECE;
+            width: 100%;
+        }
+
+        .welovehr {
+            background-color: rgb(247, 247, 247);
+            padding: 0 80px;
+        }
+
+        .license-check2 {
+            padding-right: 5px;
+            padding-left: 5px;
+        }
+
+        .license-check2:first-of-type {
+            padding-left: 0px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="fullscreen">
+        <div class="header"><a href="">Welcome to Airbnb. Find the best places to stay in the world.</a></div>
+        <div class="top-background">
+            <div class="menu">
+                <div class="menu-left"><img src="Airbnb Clone Resource/airbnb_5977574.png" alt="">
+                    <span>airbnb</span>
+                </div>
+                <div class="menu-center">
+                    <div class="Home">Home</div>
+                    <div class="Location">Location</div>
+                    <div class="AboutUs">About us</div>
+                </div>
+                <div class="menu-right">
+                    <div class="host">Become a Host</div>
+                    <div class="global"><img src="Airbnb Clone Resource/Untitled.png" alt=""></div>
+                    <div class="id"><img src="Airbnb Clone Resource/pngegg.png" alt=""> <img
+                            src="Airbnb Clone Resource/profile-icon-png-910.png" alt=""></div>
+                </div>
+            </div>
+            <div class="searchbox">
+                <div class="searchitemlarge">
+                    <div class="searchabove">Location</div>
+                    <div class="searchbelow">Where are you going?</div>
+                </div>
+                <div class="searchitem">
+                    <div class="searchabove">Check-in</div>
+                    <div class="searchbelow">Date</div>
+                </div>
+                <div class="searchitem">
+                    <div class="searchabove">Check-out</div>
+                    <div class="searchbelow">Date</div>
+                </div>
+                <div class="searchitem">
+                    <div class="searchabove">Guests</div>
+                    <div class="searchbelow">Add Guests</div>
+                </div>
+                <div class="glass"> <img
+                        src="Airbnb Clone Resource/png-clipart-computer-icons-button-search-box-button-window-rim.png"
+                        alt="">
+
+                </div>
+            </div>
+            <div class="ads">
+                <div class="adstext">Plan your Trip, <br>Nearby Places</div>
+                <div class="adsbutton"><button><b>Explore Locations</b></button></div>
+            </div>
+        </div>
+        <div class="bycar">
+            <div class="bycar1">
+                <div class="bycar11">
+                    <img src="Airbnb Clone Resource/Locations-1.png" alt="">
+                    <div class="location"><b>Khao Yai</b>30 Minutes by car</div>
+                </div>
+                <div class="bycar11">
+                    <img src="Airbnb Clone Resource/Locations-3.png" alt="">
+                    <div class="location"><b>Chiang Rai</b>1 Hour by car</div>
+                </div>
+                <div class="bycar11">
+                    <img src="Airbnb Clone Resource/Location 5.png" alt="">
+                    <div class="location"><b>Samui</b>3.5 Hours by car</div>
+                </div>
+                <div class="bycar11">
+                    <img src="Airbnb Clone Resource/Location-7.png" alt="">
+                    <div class="location"><b>Samet</b>30 Minutes by car</div>
+                </div>
+            </div>
+            <div class="bycar2">
+                <div class="bycar22">
+                    <img src="Airbnb Clone Resource/Locations-2.png" alt="">
+                    <div class="location"><b>Pathum Thani</b>2 Hours by car</div>
+                </div>
+                <div class="bycar22">
+                    <img src="Airbnb Clone Resource/Locations-4.png" alt="">
+                    <div class="location"><b>Pattaya</b>45 Minutes by car</div>
+                </div>
+                <div class="bycar22">
+                    <img src="Airbnb Clone Resource/Location-6.png" alt="">
+                    <div class="location"><b>Rayong</b>45 Minutes by car</div>
+                </div>
+                <div class="bycar22">
+                    <img src="Airbnb Clone Resource/Location-8.png" alt="">
+                    <div class="location"><b>Chiangmai</b>1 Hour by car</div>
+                </div>
+            </div>
+        </div>
+        <div class="accomodations">
+            <div class="accom-name">Accomodations</div>
+            <div class="accom">
+                <div class="accom0"><img src="Airbnb Clone Resource/Accomodations - 1.png" alt=""><b>Houses</b></div>
+                <div class="accom0"><img src="Airbnb Clone Resource/Accomodations-2.png" alt=""><b>Log Cabins & Country
+                        Houses</b></div>
+                <div class="accom0"><img src="Airbnb Clone Resource/Accomodations-3.png" alt=""><b>Unique Spaces</b>
+                </div>
+                <div class="accom0"><img src="Airbnb Clone Resource/Accomodations-4.png" alt=""><b>Hot tubs</b></div>
+            </div>
+        </div>
+        <div class="activities">
+            <div class="unique">Unique Experiences and Activities</div>
+            <div class="meet">Meet with local experts.</div>
+            <div class="act-example">
+                <div class="act-example-1"><img src="Airbnb Clone Resource/Virtual Experience.png" alt="">
+                    <div class="act-example-2">Virtual Experience</div>
+                    <div class="act-example-3">Travel the World from home</div>
+                </div>
+                <div class="act-example-1"><img src="Airbnb Clone Resource/Experience.png" alt="">
+                    <div class="act-example-2">Experience</div>
+                    <div class="act-example-3">Experience from Anywhere!</div>
+                </div>
+                <div class="act-example-1"> <img src="Airbnb Clone Resource/Adventure.png" alt="">
+                    <div class="act-example-2">Adventure</div>
+                    <div class="act-example-3">Multi-day trip with accomodation and meals.</div>
+                </div>
+            </div>
+        </div>
+        <div class="host">
+            <div class="unique">Be a part of the millions of Airbnb Host Community.</div>
+            <div class="act-example">
+                <div class="act-example-1"><img src="Airbnb Clone Resource/ Become a Hostel Host .png" alt="">
+                    <div class="act-example-4">Become a Hostel Host</div>
+                </div>
+                <div class="act-example-1"><img src="Airbnb Clone Resource/Host a Virtual Experience.png" alt="">
+                    <div class="act-example-4">Host a Virtual Experience</div>
+                </div>
+                <div class="act-example-1"> <img src="Airbnb Clone Resource/Host Your Experience.png" alt="">
+                    <div class="act-example-4">Host your Experience</div>
+                </div>
+            </div>
+        </div>
+        <div class="bottommenu">
+            <div class="bottommenu-1">
+                <div class="bottommenu-02">Introduce</div>
+                <div class="bottommenu-2">Guide to Use Airbnb</div>
+                <div class="bottommenu-2">Newsroom</div>
+                <div class="bottommenu-2">Investor Information</div>
+                <div class="bottommenu-2">Airbnb Plus</div>
+                <div class="bottommenu-2">Airbnb Luxe</div>
+                <div class="bottommenu-2">Hotel Tonight</div>
+                <div class="bottommenu-2">Airbnb Business Program</div>
+                <div class="bottommenu-2">Olympic</div>
+                <div class="bottommenu-2">Jobs</div>
+            </div>
+            <div class="bottommenu-1">
+                <div class="bottommenu-02">Community</div>
+                <div class="bottommenu-2">Diversity</div>
+                <div class="bottommenu-2">Accessibility</div>
+                <div class="bottommenu-2">Airbnb Associate</div>
+                <div class="bottommenu-2">Accomodation for Aid Workers</div>
+                <div class="bottommenu-2">Invite Friends</div>
+                <div class="bottommenu-2">Airbnb.org</div>
+            </div>
+            <div class="bottommenu-1">
+                <div class="bottommenu-02">To Host</div>
+                <div class="bottommenu-2">Accomodation Hosting</div>
+                <div class="bottommenu-2">Host a Virtual Experience</div>
+                <div class="bottommenu-2">Host Your Experience</div>
+                <div class="bottommenu-2">Responsible Hosting</div>
+                <div class="bottommenu-2">Data Center</div>
+                <div class="bottommenu-2">Community Center</div>
+            </div>
+            <div class="bottommenu-1">
+                <div class="bottommenu-02">Airbnb Support</div>
+                <div class="bottommenu-2">Airbnb's response to COVID-19</div>
+                <div class="bottommenu-2">Help Center</div>
+                <div class="bottommenu-2">Reservation Cancellation</div>
+                <div class="bottommenu-2">Airbnb Neighbor Complaint Support</div>
+                <div class="bottommenu-2">Trust and Safety</div>
+            </div>
+        </div>
+        <div class="welovehr">
+            <hr>
+        </div>
+        <div class="footer">
+            <div class="footer-linebreak">
+                <div class="license">© 2021 Airbnb, Inc. All rights reserved</div>
+                <div class="language"> 🌏︎ <span>English (EN)</span> ฿ <span>THB</span>
+                </div>
+                <div class="social"><img src="Airbnb Clone Resource/FB.png" alt=""><img
+                        src="Airbnb Clone Resource/twitter.png" alt=""><img src="Airbnb Clone Resource/images.png"
+                        alt="">
+                </div>
+            </div>
+            <div class="footer-linebreak">
+                <div class="license-check">
+                    <div class="license-check2">Privacy Policy </div> ·
+                    <div class="license-check2">Terms of Service </div>·
+                    <div class="license-check2">Site Map </div>·
+                    <div class="license-check2">Refund Policy </div>·
+                    <div class="license-check2">Company Details</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
